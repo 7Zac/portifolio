@@ -34,12 +34,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="section-pad-x"
       style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "100dvh",
         display: "flex",
         alignItems: "center",
-        padding: "0 2rem",
         overflow: "hidden",
       }}
     >
@@ -55,20 +55,15 @@ export default function Hero() {
         }}
       />
 
-      {/* Decorative vertical line */}
-      <div
-        style={{
-          position: "absolute",
-          left: "2rem",
-          top: "25%",
-          bottom: "25%",
-          width: "1px",
-          background:
-            "linear-gradient(to bottom, transparent, var(--border-hover), transparent)",
-        }}
-      />
+      <div className="hero-decor-line" aria-hidden="true" />
 
-      <div style={{ maxWidth: "900px", margin: "0 auto", width: "100%", paddingTop: "6rem" }}>
+      <div
+        className="page-container"
+        style={{
+          paddingTop: "calc(var(--nav-height) + 2.5rem)",
+          paddingBottom: "2rem",
+        }}
+      >
         {/* Status badge */}
         <div
           className="fade-up"
@@ -93,7 +88,7 @@ export default function Hero() {
               animation: "blink 1.5s ease infinite",
             }}
           />
-          <span style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 500, letterSpacing: "0.04em" }}>
+          <span style={{ fontSize: "clamp(11px, 2.5vw, 12px)", color: "var(--accent)", fontWeight: 500, letterSpacing: "0.04em" }}>
             Disponível para novas oportunidades
           </span>
         </div>
@@ -147,7 +142,7 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="fade-up-5" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "4rem" }}>
+        <div className="fade-up-5 hero-ctas" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "clamp(2.5rem, 6vw, 4rem)" }}>
           <a
             href="#projetos"
             style={{
@@ -243,19 +238,20 @@ export default function Hero() {
 
         {/* Stats row */}
         <div
+          className="hero-stats"
           style={{
             display: "flex",
-            gap: "2.5rem",
+            gap: "clamp(1.25rem, 4vw, 2.5rem)",
             flexWrap: "wrap",
             borderTop: "1px solid var(--border)",
-            paddingTop: "2rem",
+            paddingTop: "clamp(1.5rem, 4vw, 2rem)",
           }}
         >
           {stats.map((s, i) => (
             <div key={i}>
               <div
                 className="font-display"
-                style={{ fontSize: "28px", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1 }}
+                style={{ fontSize: "clamp(22px, 5vw, 28px)", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1 }}
               >
                 {s.value}
               </div>

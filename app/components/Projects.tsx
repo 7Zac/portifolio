@@ -15,10 +15,7 @@ export default function Projects() {
   const others = projects.filter((p) => !p.featured);
 
   return (
-    <section
-      id="projetos"
-      style={{ padding: "6rem 2rem", maxWidth: "900px", margin: "0 auto" }}
-    >
+    <section id="projetos" className="section-pad page-container">
       {/* Header */}
       <div style={{ marginBottom: "3.5rem" }}>
         <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
@@ -36,7 +33,7 @@ export default function Projects() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
           gap: "16px",
           marginBottom: "16px",
         }}
@@ -188,7 +185,8 @@ export default function Projects() {
                 rel="noreferrer"
                 className="card-hover"
                 style={{
-                  flex: "1 1 260px",
+                  flex: "1 1 min(100%, 260px)",
+                  minWidth: 0,
                   background: "var(--bg-2)",
                   border: "1px solid var(--border)",
                   borderRadius: "16px",

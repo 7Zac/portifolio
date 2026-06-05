@@ -10,14 +10,14 @@ export default function Experience() {
   return (
     <section
       id="experiencia"
+      className="section-pad"
       style={{
-        padding: "6rem 2rem",
         background: "var(--bg-2)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
       }}
     >
-      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <div className="page-container">
         {/* Header */}
         <div style={{ marginBottom: "3.5rem" }}>
           <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
@@ -47,7 +47,7 @@ export default function Experience() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
             {experiences.map((exp, i) => (
-              <div key={i} style={{ display: "flex", gap: "2rem", position: "relative" }}>
+              <div key={i} className="exp-timeline-row">
                 {/* Dot */}
                 <div style={{ flexShrink: 0, marginTop: "6px" }}>
                   <div
@@ -76,11 +76,12 @@ export default function Experience() {
                     background: "var(--bg-3)",
                     border: "1px solid var(--border)",
                     borderRadius: "16px",
-                    padding: "1.5rem",
+                    padding: "clamp(1.125rem, 3vw, 1.5rem)",
+                    minWidth: 0,
                   }}
                 >
                   {/* Top row */}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", marginBottom: "8px" }}>
+                  <div className="exp-card-top">
                     <div>
                       <div style={{ fontSize: "16px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "2px" }}>
                         {exp.role}

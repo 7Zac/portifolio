@@ -44,7 +44,7 @@ export default function Contact() {
     border: "1px solid var(--border)",
     borderRadius: "10px",
     padding: "12px 14px",
-    fontSize: "14px",
+    fontSize: "16px",
     color: "var(--text-primary)",
     outline: "none",
     transition: "border-color 0.2s",
@@ -52,12 +52,8 @@ export default function Contact() {
   } as React.CSSProperties;
 
   return (
-    <section
-      id="contato"
-      style={{ padding: "6rem 2rem", maxWidth: "900px", margin: "0 auto" }}
-    >
-      {/* Header */}
-      <div style={{ marginBottom: "3.5rem" }}>
+    <section id="contato" className="section-pad page-container">
+      <div style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
         <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
           <span className="accent-line" />Contato
         </p>
@@ -70,10 +66,9 @@ export default function Contact() {
         </h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
-        {/* Left — social links */}
+      <div className="grid-2-col">
         <div>
-          <p style={{ fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "2rem" }}>
+          <p style={{ fontSize: "clamp(15px, 2vw, 16px)", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "2rem" }}>
             Estou aberto a novas oportunidades, projetos freelance e colaborações. Me mande uma mensagem ou encontre-me nas redes.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -94,6 +89,7 @@ export default function Contact() {
                   padding: "12px 16px",
                   textDecoration: "none",
                   transition: "all 0.2s",
+                  minHeight: "44px",
                 }}
               >
                 <span
@@ -115,23 +111,23 @@ export default function Contact() {
                 >
                   {s.icon}
                 </span>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>{s.label}</div>
-                  <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>{s.desc}</div>
+                  <div style={{ fontSize: "12px", color: "var(--text-muted)", overflow: "hidden", textOverflow: "ellipsis" }}>{s.desc}</div>
                 </div>
-                <span style={{ marginLeft: "auto", color: "var(--text-muted)", fontSize: "14px" }}>→</span>
+                <span style={{ marginLeft: "auto", color: "var(--text-muted)", fontSize: "14px", flexShrink: 0 }}>→</span>
               </a>
             ))}
           </div>
         </div>
 
-        {/* Right — form */}
         <div
           style={{
             background: "var(--bg-2)",
             border: "1px solid var(--border)",
             borderRadius: "20px",
-            padding: "2rem",
+            padding: "clamp(1.25rem, 4vw, 2rem)",
+            minWidth: 0,
           }}
         >
           {sent ? (
@@ -144,6 +140,7 @@ export default function Contact() {
                 Obrigado pelo contato. Responderei em breve!
               </p>
               <button
+                type="button"
                 onClick={() => setSent(false)}
                 style={{
                   marginTop: "1.5rem",
@@ -151,7 +148,8 @@ export default function Contact() {
                   color: "var(--accent)",
                   border: "1px solid rgba(200,240,110,0.2)",
                   borderRadius: "8px",
-                  padding: "8px 20px",
+                  padding: "10px 20px",
+                  minHeight: "44px",
                   fontSize: "14px",
                   cursor: "pointer",
                   fontFamily: "var(--font-body)",
@@ -208,7 +206,7 @@ export default function Contact() {
                   placeholder="Conte sobre o projeto ou oportunidade..."
                   value={formState.message}
                   onChange={(e) => setFormState((f) => ({ ...f, message: e.target.value }))}
-                  style={{ ...inputStyle, resize: "vertical" }}
+                  style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
                   onFocus={(e) => (e.target.style.borderColor = "var(--border-hover)")}
                   onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                 />
@@ -225,12 +223,14 @@ export default function Contact() {
                   border: "none",
                   borderRadius: "10px",
                   padding: "13px",
+                  minHeight: "48px",
                   fontSize: "14px",
                   fontWeight: 600,
                   cursor: sending ? "not-allowed" : "pointer",
                   fontFamily: "var(--font-body)",
                   transition: "all 0.2s",
                   letterSpacing: "0.01em",
+                  width: "100%",
                 }}
               >
                 {sending ? "Enviando..." : "Enviar mensagem →"}
@@ -239,12 +239,6 @@ export default function Contact() {
           )}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 700px) {
-          #contato > div:last-child { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }

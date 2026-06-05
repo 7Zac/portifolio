@@ -18,14 +18,14 @@ export default function Skills() {
   return (
     <section
       id="habilidades"
+      className="section-pad"
       style={{
-        padding: "6rem 2rem",
         background: "var(--bg-2)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
       }}
     >
-      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <div className="page-container">
         {/* Header */}
         <div style={{ marginBottom: "3.5rem" }}>
           <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
@@ -40,7 +40,7 @@ export default function Skills() {
         </div>
 
         {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: "16px" }}>
           {Object.values(skills).map((category) => (
             <div
               key={category.label}

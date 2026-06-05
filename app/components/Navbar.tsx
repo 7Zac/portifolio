@@ -21,32 +21,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("nav-open", menuOpen);
+    return () => document.body.classList.remove("nav-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header
+      className="nav-header"
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        padding: "0 2rem",
-        height: "64px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
         background: scrolled ? "rgba(10,10,11,0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-        transition: "all 0.3s ease",
       }}
     >
-      {/* Logo */}
       <a
         href="#"
+        onClick={closeMenu}
         style={{
           fontFamily: "var(--font-display)",
           fontWeight: 700,
-          fontSize: "18px",
+          fontSize: "clamp(16px, 4vw, 18px)",
           color: "var(--text-primary)",
           textDecoration: "none",
           letterSpacing: "-0.02em",
@@ -55,11 +61,7 @@ export default function Navbar() {
         IL<span style={{ color: "var(--accent)" }}>.</span>
       </a>
 
-      {/* Desktop nav */}
-      <nav
-        style={{ display: "flex", gap: "2rem", alignItems: "center" }}
-        className="hidden-mobile"
-      >
+      <nav className="nav-desktop">
         {links.map((l) => (
           <a
             key={l.href}
@@ -86,11 +88,12 @@ export default function Navbar() {
             fontWeight: 500,
             color: "var(--bg)",
             background: "var(--accent)",
-            padding: "6px 16px",
+            padding: "8px 16px",
             borderRadius: "100px",
             textDecoration: "none",
             letterSpacing: "0.02em",
             transition: "opacity 0.2s",
+            whiteSpace: "nowrap",
           }}
           onMouseOver={(e) => ((e.target as HTMLElement).style.opacity = "0.85")}
           onMouseOut={(e) => ((e.target as HTMLElement).style.opacity = "1")}
@@ -99,64 +102,57 @@ export default function Navbar() {
         </a>
       </nav>
 
-      {/* Mobile hamburger */}
       <button
+        type="button"
         onClick={() => setMenuOpen(!menuOpen)}
+        className="nav-mobile-toggle"
         style={{
           background: "none",
           border: "1px solid var(--border)",
-          borderRadius: "6px",
-          padding: "6px 10px",
+          borderRadius: "8px",
+          padding: "0 12px",
           cursor: "pointer",
           color: "var(--text-primary)",
           fontSize: "18px",
-          display: "none",
         }}
-        className="show-mobile"
-        aria-label="Menu"
+        aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+        aria-expanded={menuOpen}
       >
         {menuOpen ? "✕" : "☰"}
       </button>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: "64px",
-            left: 0,
-            right: 0,
-            background: "var(--bg-2)",
-            borderBottom: "1px solid var(--border)",
-            padding: "1.5rem 2rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-          }}
-        >
+        <nav className="nav-mobile-panel" aria-label="Menu principal">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                fontSize: "16px",
-                color: "var(--text-primary)",
-                textDecoration: "none",
-              }}
-            >
+            <a key={l.href} href={l.href} className="nav-mobile-link" onClick={closeMenu}>
               {l.label}
             </a>
           ))}
-        </div>
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeMenu}
+            style={{
+              marginTop: "0.75rem",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: "44px",
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "var(--bg)",
+              background: "var(--accent)",
+              padding: "10px 20px",
+              borderRadius: "100px",
+              textDecoration: "none",
+              alignSelf: "flex-start",
+            }}
+          >
+            GitHub
+          </a>
+        </nav>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: block !important; }
-        }
-      `}</style>
     </header>
   );
 }
