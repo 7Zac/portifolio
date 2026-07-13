@@ -127,6 +127,21 @@ export const projects = [
     featured: true,
   },
   {
+    slug: "ecommerce-sandalias",
+    title: "Ecommerce Sandalias",
+    subtitle: "E-commerce completo",
+    description:
+      "O Ecommerce Sandálias é uma plataforma de e-commerce desenvolvida para apresentar e comercializar produtos da marca Olinda.",
+    longDescription:
+      "O site oferece uma experiência de compra intuitiva e moderna, com categorias específicas para diferentes públicos: homens, mulheres, crianças, bebês e licenciados. A aplicação foi construída com foco em performance, acessibilidade e design responsivo, visando proporcionar uma navegação fluida em dispositivos móveis e desktop.",
+    tech: ["Next.js", "TypeScript", "Node.js", "React.js", "TailwindCSS"],
+    github: "https://github.com/7Zac/ecommerce-sandalias",
+    live: "https://ecommerce-sandalias.vercel.app",
+    color: "cyan",
+    icon: "shopping-bag",
+    featured: true,
+  },
+  {
     slug: "e-contract",
     title: "e-Contract",
     subtitle: "Gerador de recibos",
@@ -164,12 +179,12 @@ export const projects = [
       "Projeto desenvolvido em equipe com foco em colaboração, boas práticas de versionamento e desenvolvimento TypeScript moderno.",
     longDescription:
       "Trabalho em equipe priorizando code review, organização de branches e entrega contínua.",
-    tech: ["TypeScript", "Colaborativo"],
+    tech: ["TypeScript","Next.js","APIRest","TailwindCSS", "React.js","Colaborativo"],
     github: "https://github.com/GuilhermeMarqus/Moreilandia",
-    live: null,
+    live: "https://melreilandia.vercel.app",
     color: "amber",
     icon: "users",
-    featured: false,
+    featured: "true",
   },
 ];
 
