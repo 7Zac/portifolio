@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Activity, FileText, ShoppingBag, Users, type LucideIcon } from "lucide-react";
 import { projects } from "@/app/lib/data";
 
 const colorMap: Record<string, { accent: string; bg: string; border: string }> = {
@@ -7,6 +8,14 @@ const colorMap: Record<string, { accent: string; bg: string; border: string }> =
   blue: { accent: "#7eb3ff", bg: "rgba(99,153,255,0.08)", border: "rgba(99,153,255,0.2)" },
   purple: { accent: "#AFA9EC", bg: "rgba(127,119,221,0.08)", border: "rgba(127,119,221,0.2)" },
   amber: { accent: "#EF9F27", bg: "rgba(186,117,23,0.08)", border: "rgba(186,117,23,0.2)" },
+  cyan: {accent: "#00BBF0", bg: "rgba(0,59,163,0.08)", border: "rgba(0,59,163,0.2)"},
+};
+
+const iconMap: Record<string, LucideIcon> = {
+  "shopping-bag": ShoppingBag,
+  "file-text": FileText,
+  activity: Activity,
+  users: Users,
 };
 
 export default function Projects() {
@@ -41,6 +50,7 @@ export default function Projects() {
         {featured.map((p) => {
           const c = colorMap[p.color];
           const isHov = hovered === p.slug;
+          const IconComponent = iconMap[p.icon] ?? Users;
           return (
             <div
               key={p.slug}
@@ -77,7 +87,7 @@ export default function Projects() {
                     transform: isHov ? "scale(1.1)" : "scale(1)",
                   }}
                 >
-                  {p.icon === "shopping-bag" ? "🛍" : p.icon === "file-text" ? "📄" : p.icon === "activity" ? "🏥" : "👥"}
+                  <IconComponent size={20} strokeWidth={1.8} />
                 </div>
                 <div style={{ display: "flex", gap: "8px" }}>
                   {p.live && (
