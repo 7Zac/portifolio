@@ -24,12 +24,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "E-mail inválido." }, { status: 400 });
     }
 
+    if (!process.env.RESEND_API_KEY) {
+      console.error("[ERRO] RESEND_API_KEY não está configurada na Vercel");
+      return NextResponse.json({ error: "Serviço de e-mail não configurado. Contate o administrador." }, { status: 500 });
+    }
+
     if (!resend) {
-      return NextResponse.json({ error: "Serviço de e-mail não configurado." }, { status: 500 });
+      console.error("[ERRO] Resend não foi inicializado com sucesso");
+      return NextResponse.json({ error: "Serviço de e-mail indisponível." }, { status: 500 });
     }
 
     const from = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
     const to = process.env.CONTACT_TO_EMAIL ?? "isaac.lopesalencar@gmail.com";
+
+    console.log("[INFO] Enviando e-mail com FROM:", from, "TO:", to);
 
     const escapedName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const escapedEmail = email.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -80,7 +88,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Erro ao enviar e-mail:", err);
-    return NextResponse.json({ error: "Erro interno ao enviar a mensagem." }, { status: 500 });
+    console.error("[ERRO] Ao enviar e-mail:", err);
+    const errorMessage = err instanceof Error ? err.message : "Erro desconhecido";
+    return NextResponse.json({ error: `Erro interno: ${errorMessage}` }, { status: 500 });
   }
 }
