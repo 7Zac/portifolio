@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Activity, FileText, ShoppingBag, Users, type LucideIcon } from "lucide-react";
 import { projects } from "@/app/lib/data";
 
@@ -138,6 +139,32 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
+
+              {/* Image Preview */}
+              {p.image && (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "160px",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    background: c.bg,
+                    border: `1px solid ${c.border}`,
+                    position: "relative",
+                  }}
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover"
+                    style={{
+                      transition: "transform 0.3s ease",
+                      transform: isHov ? "scale(1.05)" : "scale(1)",
+                    }}
+                  />
+                </div>
+              )}
 
               {/* Content */}
               <div>
