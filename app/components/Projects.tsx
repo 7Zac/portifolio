@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Activity, FileText, ShoppingBag, Users, type LucideIcon } from "lucide-react";
 import { projects } from "@/app/lib/data";
 
@@ -53,8 +54,9 @@ export default function Projects() {
           const isHov = hovered === p.slug;
           const IconComponent = iconMap[p.icon] ?? Users;
           return (
-            <div
+            <Link
               key={p.slug}
+              href={`/projects/${p.slug}/`}
               onMouseEnter={() => setHovered(p.slug)}
               onMouseLeave={() => setHovered(null)}
               style={{
@@ -68,6 +70,7 @@ export default function Projects() {
                 transition: "all 0.25s ease",
                 transform: isHov ? "translateY(-3px)" : "none",
                 cursor: "pointer",
+                textDecoration: "none",
               }}
             >
               {/* Top row */}
@@ -92,10 +95,13 @@ export default function Projects() {
                 </div>
                 <div style={{ display: "flex", gap: "8px" }}>
                   {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noreferrer"
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.open(p.live, "_blank", "noreferrer");
+                      }}
                       style={{
                         width: "32px",
                         height: "32px",
@@ -107,19 +113,20 @@ export default function Projects() {
                         justifyContent: "center",
                         fontSize: "13px",
                         color: "var(--text-secondary)",
-                        textDecoration: "none",
-                        transition: "color 0.2s",
+                        cursor: "pointer",
                       }}
                       title="Ver projeto ao vivo"
                     >
                       ↗
-                    </a>
+                    </button>
                   )}
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.open(p.github, "_blank", "noreferrer");
+                    }}
                     style={{
                       width: "32px",
                       height: "32px",
@@ -131,12 +138,12 @@ export default function Projects() {
                       justifyContent: "center",
                       fontSize: "13px",
                       color: "var(--text-secondary)",
-                      textDecoration: "none",
+                      cursor: "pointer",
                     }}
                     title="Ver no GitHub"
                   >
                     ⌥
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -204,7 +211,7 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
@@ -215,11 +222,9 @@ export default function Projects() {
           {others.map((p) => {
             const c = colorMap[p.color];
             return (
-              <a
+              <Link
                 key={p.slug}
-                href={p.github}
-                target="_blank"
-                rel="noreferrer"
+                href={`/projects/${p.slug}/`}
                 className="card-hover"
                 style={{
                   flex: "1 1 min(100%, 260px)",
@@ -233,6 +238,7 @@ export default function Projects() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: "12px",
+                  color: "inherit",
                 }}
               >
                 <div>
@@ -247,7 +253,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <span style={{ color: "var(--text-muted)", fontSize: "18px", flexShrink: 0 }}>→</span>
-              </a>
+              </Link>
             );
           })}
         </div>
