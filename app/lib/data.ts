@@ -115,6 +115,8 @@ export const projects = [
     slug: "bewear-bootcamp",
     title: "Bewear Bootcamp",
     subtitle: "E-commerce completo",
+    role: "Plataforma de e-commerce fullstack",
+    focus: "Arquitetura moderna, checkout seguro e dados escaláveis",
     description:
       "Plataforma de e-commerce desenvolvida com Next.js e Node.js, com banco de dados PostgreSQL gerenciado via Drizzle ORM. Pagamentos integrados via Stripe com fluxo completo de checkout.",
     longDescription:
@@ -131,6 +133,8 @@ export const projects = [
     slug: "ecommerce-sandalias",
     title: "Ecommerce Sandalias",
     subtitle: "E-commerce completo",
+    role: "Vitrine digital para marca de calçados",
+    focus: "UX responsivo, performance mobile-first e estratégias de conversão",
     description:
       "O Ecommerce Sandálias é uma plataforma de e-commerce desenvolvida para apresentar e comercializar produtos da marca Olinda.",
     longDescription:
@@ -147,6 +151,8 @@ export const projects = [
     slug: "e-contract",
     title: "e-Contract",
     subtitle: "Gerador de recibos",
+    role: "Gerador de recibos para vendas rápidas",
+    focus: "Simplicidade de fluxo, usabilidade imediata e redução de atrito",
     description:
       "Aplicação web para geração automática de recibos de venda. O vendedor preenche os dados da transação e o recibo é gerado instantaneamente, eliminando processos manuais.",
     longDescription:
@@ -163,6 +169,8 @@ export const projects = [
     slug: "clinica-saude",
     title: "Clínica Saúde",
     subtitle: "Gestão de fluxo de pacientes",
+    role: "Painel de fluxo e atendimento clínico",
+    focus: "Operacionalidade em tempo real e experiência de usuário clara",
     description:
       "Sistema completo de gerenciamento de filas e atendimento clínico. Inclui totem de senhas, painel de TV, triagem, guichê, resultados e administração de setores e usuários.",
     longDescription:
@@ -179,6 +187,8 @@ export const projects = [
     slug: "moreilandia",
     title: "Moreilandia",
     subtitle: "Projeto colaborativo",
+    role: "Projeto colaborativo em equipe",
+    focus: "Boas práticas de versionamento, TypeScript e entrega contínua",
     description:
       "Projeto desenvolvido em equipe com foco em colaboração, boas práticas de versionamento e desenvolvimento TypeScript moderno.",
     longDescription:
