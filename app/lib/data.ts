@@ -123,7 +123,7 @@ export const projects = [
     github: "https://github.com/7Zac/bewear-bootcamp",
     live: null,
     image: "/projects/bewear.jpg",
-    color: "teal",
+    color: "purple",
     icon: "shopping-bag",
     featured: true,
   },
@@ -171,7 +171,7 @@ export const projects = [
     github: "https://github.com/7Zac/fabricaDeSoftware_frontend",
     live: "https://fabrica-de-software-frontend.vercel.app",
     image: "/projects/clinica-saude.jpg",
-    color: "purple",
+    color: "teal",
     icon: "activity",
     featured: true,
   },
@@ -195,7 +195,7 @@ export const projects = [
 
 export const stats = [
   { value: "22", label: "Repositórios" },
-  { value: "3+", label: "Anos de design" },
-  { value: "4+", label: "Projetos web" },
+  { value: "5+", label: "Anos de design" },
+  { value: "6+", label: "Projetos web" },
   { value: "2", label: "Conquistas GitHub" },
 ];
