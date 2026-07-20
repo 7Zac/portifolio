@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import dynamic from "next/dynamic";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -26,8 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body>{children}</body>
+    <html lang="pt-br">
+      <body>
+        <header>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+        </header>
+      </body>
     </html>
   );
 }
