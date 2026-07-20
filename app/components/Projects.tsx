@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Activity, FileText, ShoppingBag, Users, type LucideIcon } from "lucide-react";
+import { Activity, ExternalLink, FileText, GitFork, ShoppingBag, Users, type LucideIcon } from "lucide-react";
 import { projects } from "@/app/lib/data";
 
 const colorMap: Record<string, { accent: string; bg: string; border: string }> = {
@@ -117,7 +117,7 @@ export default function Projects() {
                       }}
                       title="Ver projeto ao vivo"
                     >
-                      ↗
+                      <ExternalLink size={14} />
                     </button>
                   )}
                   <button
@@ -142,7 +142,7 @@ export default function Projects() {
                     }}
                     title="Ver no GitHub"
                   >
-                    ⌥
+                    <GitFork size={14} />
                   </button>
                 </div>
               </div>
