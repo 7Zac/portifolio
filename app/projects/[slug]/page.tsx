@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, GitFork, Layers, Sparkles, Tablet, Users } from "lucide-react";
+import { ArrowLeft, CircleUserRound, GitFork, Layers, Sparkles, Tablet, TerminalIcon, Users } from "lucide-react";
 import { notFound } from "next/navigation";
 import { projects } from "@/app/lib/data";
 
@@ -32,7 +32,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="section-pad page-container">
-      <div style={{ marginBottom: "clamp(2rem, 5vw, 3rem)" }}>
+
+      <Link  href="/" className="flex items-center justify-center w-20 rounded-full bg-[#c8f06e] text-[#0a0a0b] gap-3 hover:bg-[#c9f06e]/80 transition text-xs" style={{margin: "16px 0 16px 0", padding: "0.6rem"}}>
+        <ArrowLeft size={12} />
+        Voltar
+      </Link>
+
+      <div style={{ marginBottom: "clamp(1rem, 5vw, 1rem)" }}>
         <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>
           Projeto
         </p>
@@ -45,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-        <div className="space-y-8">
+        <div className="flex flex-col gap-8">
           <div className="card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.5rem" }}>
             <div className="relative overflow-hidden rounded-3xl bg-[#111113]" style={{ minHeight: "320px" }}>
               <div className="absolute inset-0 bg-linear-to-br from-[#c8f06e]/12 via-transparent to-transparent" />
@@ -53,48 +59,51 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: "1rem" }}>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e]">Conceito</p>
+              <div className="rounded-3xl border border-white/10 bg-white/5" style={{padding: "1.0rem"}}>
+                <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e] font-bold">Conceito</p>
                 <p className="mt-3 text-sm text-[#d7d7d2]">{meta.role}</p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e]">Foco</p>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5" style={{padding: "1.0rem"}}>
+                <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e] font-bold">Foco</p>
                 <p className="mt-3 text-sm text-[#d7d7d2]">{meta.focus}</p>
               </div>
             </div>
           </div>
 
-          <div className="card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.75rem" }}>
-            <div style={{ marginBottom: "1.5rem" }}>
-              <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e]">Resumo estratégico</p>
-              <p className="mt-4 text-base leading-8" style={{ color: "var(--text-secondary)" }}>{project.description}</p>
+          <div className="flex flex-col gap-4 card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.75rem" }}>
+            <div className="flex flex-col gap-4">
+              <p className="text-base uppercase tracking-[0.25em] text-[#c8f06e] font-bold">Resumo estratégico</p>
+              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{project.description}</p>
             </div>
-            <p className="text-sm leading-7 text-[#d7d7d2]">{project.longDescription}</p>
+            <p className="text-sm text-[#d7d7d2]">{project.longDescription}</p>
 
-            <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: "1.5rem" }}>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5" style={{padding: "1.0rem"}}>
                 <div className="mb-3 inline-flex items-center gap-2 text-[#c8f06e]">
                   <Layers size={18} />
                   <span className="text-xs uppercase tracking-[0.2em] font-semibold">Arquitetura</span>
                 </div>
                 <p className="text-sm text-[#d7d7d2]">Interfaces construídas com componentes reutilizáveis e layout responsivo, garantindo um fluxo de leitura rápido e claro.</p>
               </div>
-              <article className="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5" style={{padding: "1.0rem"}}>
                 <div className="mb-3 inline-flex items-center gap-2 text-[#c8f06e]">
                   <Tablet size={18} />
                   <span className="text-xs uppercase tracking-[0.2em] font-semibold">Responsividade</span>
                 </div>
                 <p className="text-sm text-[#d7d7d2]">Design adaptável que preserva usabilidade em telas pequenas sem perder impacto visual em desktop.</p>
-              </article>
+              </div>
             </div>
           </div>
         </div>
 
-        <aside className="flex flex-col justify-around">
+        <aside className="flex flex-col gap-8">
           <div className="card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.5rem" }}>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e]">Identidade</p>
-            <h2 className="font-display" style={{ fontSize: "1.75rem", color: "var(--text-primary)", marginTop: "0.75rem" }}>Experiência de usuário</h2>
-            <p className="mt-4 text-sm leading-7 text-[#d7d7d2]">O layout usa hierarquia visual forte, contraste de leitura e espaçamento generoso para facilitar a compreensão instantânea das funcionalidades.</p>
+            <p className="flex gap-3 text-xs uppercase tracking-[0.25em] text-[#c8f06e] font-bold">
+              <CircleUserRound size={18} />
+              Identidade
+              </p>
+            <h2 style={{ fontSize: "1.75rem", color: "var(--text-primary)", marginTop: "0.75rem" }}>Experiência de usuário</h2>
+            <p className="mt-4 text-sm text-[#d7d7d2]">O layout usa hierarquia visual forte, contraste de leitura e espaçamento generoso para facilitar a compreensão instantânea das funcionalidades.</p>
           </div>
 
           <div className="card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.5rem" }}>
@@ -102,17 +111,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <Sparkles size={18} />
               <h3 className="text-sm uppercase tracking-[0.25em] font-semibold">Valor</h3>
             </div>
-            <ul className="space-y-3 text-sm text-[#d7d7d2]" style={{ marginTop: "1rem" }}>
+            <ul className="flex flex-col gap-3 text-sm text-[#d7d7d2]" style={{ marginTop: "1rem" }}>
               <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#c8f06e]/15 text-[#c8f06e]">•</span>
+                <span className="items-center justify-center text-[#c8f06e]">•</span>
                 <span>Organização clara das informações para conversão e confiança do usuário.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#c8f06e]/15 text-[#c8f06e]">•</span>
+                <span className="items-center justify-center text-[#c8f06e]">•</span>
                 <span>Toques de microinteração e foco nos pontos de decisão estratégicos.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#c8f06e]/15 text-[#c8f06e]">•</span>
+                <span className="items-center justify-center text-[#c8f06e]">•</span>
                 <span>Baixo ruído visual com grelha modular para leitura rápida em diferentes dispositivos.</span>
               </li>
             </ul>
@@ -123,25 +132,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <Users size={18} />
               <h3 className="text-sm uppercase tracking-[0.25em] font-semibold">Público alvo</h3>
             </div>
-            <p className="mt-3 text-sm leading-7 text-[#d7d7d2]">Projetos pensados para quem busca soluções digitais confiáveis, com foco em varejo, operações clínicas e geração de vendas simples e escaláveis.</p>
+            <p className="text-sm text-[#d7d7d2]" style={{marginTop: "1rem"}}>Projetos pensados para quem busca soluções digitais confiáveis, com foco em varejo, operações clínicas e geração de vendas simples e escaláveis.</p>
           </div>
         </aside>
       </div>
 
       <section className="card-hover" style={{ background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: "24px", padding: "1.75rem", marginTop: "2rem" }}>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 sm:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#c8f06e]">Tecnologias usadas</p>
-            <h2 className="font-display text-3xl text-white">Ferramentas e stacks</h2>
+            <p className="text-base uppercase tracking-[0.25em] text-[#c8f06e] font-bold">Tecnologias usadas</p>
+            <h2 className="text-3xl text-white">Ferramentas e stacks</h2>
           </div>
           <p className="max-w-xl text-sm text-[#d7d7d2]">Componentes leves e integração moderna com APIs e frameworks para acelerar entrega e manter consistência visual.</p>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" style={{ marginTop: "1rem" }}>
           {project.tech.map((tech) => (
-            <div key={tech} className="rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-[#d7d7d2]">
-              <span className="inline-flex items-center gap-2 font-medium text-white">
-                <ArrowRight size={14} /> {tech}
+            <div key={tech} className="rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-[#d7d7d2]" style={{padding: "0.5rem"}}>
+              <span className="flex items-center gap-2 font-medium text-white">
+                <TerminalIcon size={14} className="text-[#c8f06e]" /> 
+                {tech}
               </span>
             </div>
           ))}

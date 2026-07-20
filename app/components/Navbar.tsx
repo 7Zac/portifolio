@@ -1,13 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
 import { personal } from "@/app/lib/data";
+import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#experiencia", label: "Experiência" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#habilidades", label: "Skills" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#sobre", label: "Sobre" },
+  { href: "/#experiencia", label: "Experiência" },
+  { href: "/#projetos", label: "Projetos" },
+  { href: "/#habilidades", label: "Skills" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export default function Navbar() {
@@ -38,7 +38,7 @@ export default function Navbar() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header
+    <div
       className="nav-header"
       style={{
         background: scrolled ? "rgba(10,10,11,0.85)" : "transparent",
@@ -61,7 +61,7 @@ export default function Navbar() {
         IL<span style={{ color: "var(--accent)" }}>.</span>
       </a>
 
-      <nav className="nav-desktop">
+      <div className="nav-desktop">
         {links.map((l) => (
           <a
             key={l.href}
@@ -100,7 +100,7 @@ export default function Navbar() {
         >
           GitHub
         </a>
-      </nav>
+      </div>
 
       <button
         type="button"
@@ -122,7 +122,7 @@ export default function Navbar() {
       </button>
 
       {menuOpen && (
-        <nav className="nav-mobile-panel" aria-label="Menu principal">
+        <div className="nav-mobile-panel" aria-label="Menu principal">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="nav-mobile-link" onClick={closeMenu}>
               {l.label}
@@ -151,8 +151,8 @@ export default function Navbar() {
           >
             GitHub
           </a>
-        </nav>
+        </div>
       )}
-    </header>
+    </div>
   );
 }
