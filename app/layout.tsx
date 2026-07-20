@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import dynamic from "next/dynamic";
+import Footer from "./components/Footer";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <main>
             {children}
           </main>
+          <Footer />
         </header>
       </body>
     </html>
