@@ -1,5 +1,7 @@
 "use client";
 import { skills } from "@/app/lib/data";
+import { Palette, Server, Wallpaper, Wrench } from "lucide-react";
+import { ReactNode } from "react";
 
 const levelColor: Record<string, { bg: string; text: string; bar: string; width: string }> = {
   Avançado:    { bg: "rgba(200,240,110,0.1)", text: "var(--accent)", bar: "var(--accent)", width: "90%" },
@@ -7,11 +9,11 @@ const levelColor: Record<string, { bg: string; text: string; bar: string; width:
   Básico:      { bg: "rgba(175,169,236,0.1)", text: "#AFA9EC", bar: "#AFA9EC", width: "35%" },
 };
 
-const iconMap: Record<string, string> = {
-  monitor: "🖥",
-  server: "⚙️",
-  palette: "🎨",
-  wrench: "🔧",
+const iconMap: Record<string, ReactNode> = {
+  frontend: <Wallpaper />,
+  backend: <Server />,
+  design: <Palette />,
+  tools: <Wrench />,
 };
 
 export default function Skills() {
@@ -54,7 +56,7 @@ export default function Skills() {
             >
               {/* Category header */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.25rem" }}>
-                <span style={{ fontSize: "20px" }}>{iconMap[category.icon]}</span>
+                <span className="text-[#c8f06e]" style={{ fontSize: "20px" }}>{iconMap[category.icon]}</span>
                 <h3
                   className="font-display"
                   style={{ fontSize: "15px", fontWeight: 700, color: "var(--text-primary)" }}

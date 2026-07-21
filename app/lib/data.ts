@@ -1,3 +1,5 @@
+import { Wallpaper } from "lucide-react";
+
 export const personal = {
   name: "Isaac Lopes",
   role: "Desenvolvedor FullStack Jr.",
@@ -65,7 +67,7 @@ export const education = [
 export const skills = {
   frontend: {
     label: "Frontend",
-    icon: "monitor",
+    icon: "frontend",
     items: [
       { name: "HTML5 / CSS3", level: "Intermediário" },
       { name: "TailwindCSS", level: "Intermediário" },
@@ -77,7 +79,7 @@ export const skills = {
   },
   backend: {
     label: "Backend",
-    icon: "server",
+    icon: "backend",
     items: [
       { name: "Node.js", level: "Básico" },
       { name: "Express.js", level: "Básico" },
@@ -89,7 +91,7 @@ export const skills = {
   },
   design: {
     label: "Design",
-    icon: "palette",
+    icon: "design",
     items: [
       { name: "Figma", level: "Intermediário" },
       { name: "Adobe Photoshop", level: "Avançado" },
@@ -99,7 +101,7 @@ export const skills = {
   },
   tools: {
     label: "Ferramentas",
-    icon: "wrench",
+    icon: "tools",
     items: [
       { name: "Git / GitHub", level: "Intermediário" },
       { name: "Docker", level: "Básico" },
