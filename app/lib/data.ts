@@ -1,5 +1,3 @@
-import { Wallpaper } from "lucide-react";
-
 export const personal = {
   name: "Isaac Lopes",
   role: "Desenvolvedor FullStack Jr.",
