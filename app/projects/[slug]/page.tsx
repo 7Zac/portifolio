@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, CircleUserRound, GitFork, Layers, Sparkles, Tablet, TerminalIcon, Users } from "lucide-react";
 import { notFound } from "next/navigation";
 import { projects } from "@/app/lib/data";
+import { GitHubButton } from "@/app/components/PageProjects/GitHubButton";
+import { ViewProjectButton } from "@/app/components/PageProjects/ViewProjectButton";
 
 interface ProjectPageProps {
   params: {
@@ -32,11 +34,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="section-pad page-container">
-
-      <Link  href="/" className="flex items-center justify-center w-20 rounded-full bg-[#c8f06e] text-[#0a0a0b] gap-3 hover:bg-[#c9f06e]/80 transition text-xs" style={{margin: "16px 0 16px 0", padding: "0.6rem"}}>
+      <div className="flex items-center justify-between">
+      <Link  href="/" className="flex items-center justify-center w-20 rounded-full bg-[#c8f06e] text-[#0a0a0b] gap-3 hover:bg-[#c9f06e]/80 transition text-xs" style={{margin: "16px 0 16px 0", padding: "6px 14px"}}>
         <ArrowLeft size={12} />
         Voltar
       </Link>
+
+        <div className="flex gap-4">
+      <GitHubButton href={project.github} />
+
+      <ViewProjectButton href={project.live} />
+        </div>
+      </div>
 
       <div style={{ marginBottom: "clamp(1rem, 5vw, 1rem)" }}>
         <p style={{ fontSize: "12px", color: "var(--accent)", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>
