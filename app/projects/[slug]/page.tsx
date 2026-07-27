@@ -34,17 +34,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="section-pad page-container">
-      <div className="flex items-center justify-between">
+
+      <div className="max-sm:flex-col flex items-center sm:gap-4 justify-between" style={{padding: "14px 0 14px 0"}}>
+        <div className="flex items-center gap-4">
       <Link  href="/" className="flex items-center justify-center w-20 rounded-full bg-[#c8f06e] text-[#0a0a0b] gap-3 hover:bg-[#c9f06e]/80 transition text-xs" style={{margin: "16px 0 16px 0", padding: "6px 14px"}}>
         <ArrowLeft size={12} />
         Voltar
       </Link>
 
-        <div className="flex gap-4">
-      <GitHubButton href={project.github} />
-
-      <ViewProjectButton href={project.live} />
+          <GitHubButton href={project.github} />
         </div>
+
+        
+          <ViewProjectButton href={project.live} />
       </div>
 
       <div style={{ marginBottom: "clamp(1rem, 5vw, 1rem)" }}>
