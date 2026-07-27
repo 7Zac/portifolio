@@ -47,7 +47,7 @@ export default function Navbar() {
       }}
     >
       <a
-        href="#"
+        href="/"
         onClick={closeMenu}
         style={{
           fontFamily: "var(--font-display)",
