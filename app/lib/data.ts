@@ -121,7 +121,14 @@ export const projects = [
       "Plataforma de e-commerce desenvolvida com Next.js e Node.js, com banco de dados PostgreSQL gerenciado via Drizzle ORM. Pagamentos integrados via Stripe com fluxo completo de checkout.",
     longDescription:
       "Projeto focado em estudos avançados de arquitetura fullstack. Cobre catálogo de produtos, carrinho de compras, autenticação e pagamento com Stripe. A camada de dados usa Drizzle ORM com PostgreSQL.",
-    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "Stripe"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Stripe",
+    ],
     github: "https://github.com/7Zac/bewear-bootcamp",
     live: null,
     image: "/projects/bewear.jpg",
@@ -136,7 +143,7 @@ export const projects = [
     role: "Vitrine digital para marca de calçados",
     focus: "UX responsivo, performance mobile-first e estratégias de conversão",
     description:
-      "O Ecommerce Sandálias é uma plataforma de e-commerce desenvolvida para apresentar e comercializar produtos da marca Olinda.",
+      "O Ecommerce Sandálias é uma plataforma de e-commerce desenvolvida para apresentar e comercializar produtos da marca.",
     longDescription:
       "O site oferece uma experiência de compra intuitiva e moderna, com categorias específicas para diferentes públicos: homens, mulheres, crianças, bebês e licenciados. A aplicação foi construída com foco em performance, acessibilidade e design responsivo, visando proporcionar uma navegação fluida em dispositivos móveis e desktop.",
     tech: ["Next.js", "TypeScript", "Node.js", "React.js", "TailwindCSS"],
@@ -144,6 +151,24 @@ export const projects = [
     live: "https://ecommerce-sandalias.vercel.app",
     image: "/projects/ecommerce-sandalias.jpg",
     color: "cyan",
+    icon: "shopping-bag",
+    featured: true,
+  },
+  {
+    slug: "nardo-puro",
+    title: "Nardo Puro",
+    subtitle: "Site institucional + Ecommerce",
+    role: "Vitrine digital para marca de calçados",
+    focus: "UX responsivo, performance mobile-first e estratégias de conversão",
+    description:
+      "Uma plataforma de vendas de produtos artesanais, com foco em design sofisticado e experiência de usuário intuitiva. A marca vende produtos de qualidade com carinho em cada detalhe.",
+    longDescription:
+      "Nardo Puro é um e-commerce moderno de produtos artesanais (velas, aromatizadores, sabonetes e lembrancinhas) desenvolvido com tecnologias front-end de ponta. O projeto prioriza uma experiência de usuário elegante e responsiva, com foco em mobile-first e acessibilidade.",
+    tech: ["Next.js", "TypeScript", "React.js", "TailwindCSS"],
+    github: "not-found",
+    live: "https://loja.nardopuro.cloud",
+    image: "/projects/nardoPuro.jpg",
+    color: "teal",
     icon: "shopping-bag",
     featured: true,
   },
@@ -175,7 +200,13 @@ export const projects = [
       "Sistema completo de gerenciamento de filas e atendimento clínico. Inclui totem de senhas, painel de TV, triagem, guichê, resultados e administração de setores e usuários.",
     longDescription:
       "Desenvolvido na disciplina Fábrica de Software da UNINASSAU. Frontend em Next.js consumindo API REST externa. Funcionalidades de login com RBAC, gestão de anúncios e exibição em tempo real.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "REST API"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "REST API",
+    ],
     github: "https://github.com/7Zac/fabricaDeSoftware_frontend",
     live: "https://fabrica-de-software-frontend.vercel.app",
     image: "/projects/clinica-saude.jpg",
@@ -193,7 +224,14 @@ export const projects = [
       "Projeto desenvolvido em equipe com foco em colaboração, boas práticas de versionamento e desenvolvimento TypeScript moderno.",
     longDescription:
       "Trabalho em equipe priorizando code review, organização de branches e entrega contínua.",
-    tech: ["TypeScript","Next.js","APIRest","TailwindCSS", "React.js","Colaborativo"],
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "APIRest",
+      "TailwindCSS",
+      "React.js",
+      "Colaborativo",
+    ],
     github: "https://github.com/GuilhermeMarqus/Moreilandia",
     live: "https://melreilandia.vercel.app",
     image: "/projects/moreilandia.jpg",
